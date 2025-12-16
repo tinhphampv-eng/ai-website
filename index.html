@@ -13,8 +13,8 @@
     
     <style>
         :root {
-            --primary: #ff7a00;
-            --primary-dark: #e56b00;
+            --primary: #10b981;
+            --primary-dark: #059669;
             --secondary: #7b2cbf;
             --accent: #ff6b6b;
             --dark: #0a0a0f;
@@ -22,8 +22,8 @@
             --dark-card: #1a1a25;
             --text: #e8e8e8;
             --text-muted: #8a8a9a;
-            --gradient-primary: linear-gradient(135deg, #ff7a00 0%, #ff5500 50%, #ff2d00 100%);
-            --gradient-glow: linear-gradient(135deg, rgba(255,122,0,0.3) 0%, rgba(255,45,0,0.3) 100%);
+            --gradient-primary: linear-gradient(135deg, #10b981 0%, #059669 50%, #047857 100%);
+            --gradient-glow: linear-gradient(135deg, rgba(16,185,129,0.3) 0%, rgba(5,150,105,0.3) 100%);
             --font-display: 'Orbitron', sans-serif;
             --font-body: 'Be Vietnam Pro', sans-serif;
         }
@@ -54,8 +54,8 @@
             width: 100%;
             height: 100%;
             background-image: 
-                linear-gradient(rgba(255,122,0,0.03) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(255,122,0,0.03) 1px, transparent 1px);
+                linear-gradient(rgba(16,185,129,0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(16,185,129,0.03) 1px, transparent 1px);
             background-size: 50px 50px;
             pointer-events: none;
             z-index: 0;
@@ -105,7 +105,7 @@
         header.scrolled {
             background: rgba(10, 10, 15, 0.95);
             backdrop-filter: blur(20px);
-            border-bottom: 1px solid rgba(255, 122, 0, 0.1);
+            border-bottom: 1px solid rgba(16, 185, 129, 0.1);
         }
 
         nav {
@@ -184,12 +184,12 @@
         .btn-primary {
             background: var(--gradient-primary);
             color: var(--dark);
-            box-shadow: 0 0 30px rgba(255, 122, 0, 0.3);
+            box-shadow: 0 0 30px rgba(16, 185, 129, 0.3);
         }
 
         .btn-primary:hover {
             transform: translateY(-3px);
-            box-shadow: 0 0 50px rgba(255, 122, 0, 0.5);
+            box-shadow: 0 0 50px rgba(16, 185, 129, 0.5);
         }
 
         .btn-outline {
@@ -201,6 +201,39 @@
         .btn-outline:hover {
             background: var(--primary);
             color: var(--dark);
+        }
+
+        /* Hero specific buttons */
+        .hero .btn-primary {
+            background: #ffffff;
+            color: #047857;
+            font-weight: 700;
+            box-shadow: 0 0 30px rgba(255, 255, 255, 0.4), 0 10px 40px rgba(0,0,0,0.2);
+            animation: btnFloat 3s ease-in-out infinite;
+        }
+
+        .hero .btn-primary:hover {
+            background: #f0fdf4;
+            transform: translateY(-5px) scale(1.02);
+            box-shadow: 0 0 50px rgba(255, 255, 255, 0.6), 0 20px 50px rgba(0,0,0,0.3);
+        }
+
+        .hero .btn-outline {
+            background: rgba(255, 255, 255, 0.1);
+            color: #ffffff;
+            border: 2px solid rgba(255, 255, 255, 0.5);
+            backdrop-filter: blur(10px);
+        }
+
+        .hero .btn-outline:hover {
+            background: rgba(255, 255, 255, 0.25);
+            border-color: #ffffff;
+            color: #ffffff;
+        }
+
+        @keyframes btnFloat {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-5px); }
         }
 
         .mobile-menu-btn {
@@ -220,6 +253,195 @@
             padding: 8rem 2rem 4rem;
             position: relative;
             z-index: 1;
+            background: linear-gradient(135deg, #10b981 0%, #059669 30%, #047857 60%, #065f46 100%);
+            overflow: hidden;
+        }
+
+        /* Hero Animated Background */
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 20% 80%, rgba(255,255,255,0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(255,255,255,0.15) 0%, transparent 40%),
+                radial-gradient(circle at 40% 40%, rgba(4,120,87,0.8) 0%, transparent 50%);
+            z-index: 0;
+        }
+
+        /* Floating Particles */
+        .hero-particles {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .particle {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background: rgba(255,255,255,0.3);
+            border-radius: 50%;
+            animation: floatParticle 15s infinite ease-in-out;
+        }
+
+        .particle:nth-child(1) { left: 10%; top: 20%; animation-delay: 0s; width: 8px; height: 8px; }
+        .particle:nth-child(2) { left: 20%; top: 80%; animation-delay: 2s; width: 12px; height: 12px; }
+        .particle:nth-child(3) { left: 30%; top: 40%; animation-delay: 4s; width: 6px; height: 6px; }
+        .particle:nth-child(4) { left: 50%; top: 60%; animation-delay: 1s; width: 14px; height: 14px; }
+        .particle:nth-child(5) { left: 70%; top: 30%; animation-delay: 3s; width: 10px; height: 10px; }
+        .particle:nth-child(6) { left: 80%; top: 70%; animation-delay: 5s; width: 8px; height: 8px; }
+        .particle:nth-child(7) { left: 90%; top: 50%; animation-delay: 2.5s; width: 16px; height: 16px; }
+        .particle:nth-child(8) { left: 15%; top: 60%; animation-delay: 3.5s; width: 6px; height: 6px; }
+        .particle:nth-child(9) { left: 60%; top: 15%; animation-delay: 4.5s; width: 12px; height: 12px; }
+        .particle:nth-child(10) { left: 40%; top: 85%; animation-delay: 1.5s; width: 10px; height: 10px; }
+
+        @keyframes floatParticle {
+            0%, 100% { transform: translateY(0) translateX(0) scale(1); opacity: 0.3; }
+            25% { transform: translateY(-100px) translateX(20px) scale(1.2); opacity: 0.6; }
+            50% { transform: translateY(-50px) translateX(-30px) scale(0.8); opacity: 0.4; }
+            75% { transform: translateY(-150px) translateX(10px) scale(1.1); opacity: 0.5; }
+        }
+
+        /* Wave Animation */
+        .hero-wave {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 150px;
+            z-index: 2;
+        }
+
+        .hero-wave svg {
+            position: absolute;
+            bottom: 0;
+            width: 200%;
+            height: 100%;
+        }
+
+        .hero-wave .wave1 {
+            animation: waveMove 8s linear infinite;
+            opacity: 0.6;
+        }
+
+        .hero-wave .wave2 {
+            animation: waveMove 6s linear infinite reverse;
+            opacity: 0.4;
+            bottom: 10px;
+        }
+
+        @keyframes waveMove {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+
+        /* Glowing Orbs in Hero */
+        .hero-glow {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(80px);
+            z-index: 0;
+        }
+
+        .hero-glow-1 {
+            width: 500px;
+            height: 500px;
+            background: rgba(255,255,255,0.15);
+            top: -100px;
+            right: -100px;
+            animation: pulseGlow 4s ease-in-out infinite;
+        }
+
+        .hero-glow-2 {
+            width: 400px;
+            height: 400px;
+            background: rgba(4,120,87,0.5);
+            bottom: -100px;
+            left: -100px;
+            animation: pulseGlow 5s ease-in-out infinite reverse;
+        }
+
+        .hero-glow-3 {
+            width: 300px;
+            height: 300px;
+            background: rgba(16,185,129,0.3);
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            animation: pulseGlow 6s ease-in-out infinite;
+        }
+
+        @keyframes pulseGlow {
+            0%, 100% { transform: scale(1); opacity: 0.5; }
+            50% { transform: scale(1.3); opacity: 0.8; }
+        }
+
+        /* Sparkle Stars */
+        .hero-sparkles {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: 2;
+            pointer-events: none;
+        }
+
+        .sparkle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: #ffffff;
+            border-radius: 50%;
+            animation: sparkle 4s ease-in-out infinite;
+            box-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #fff;
+        }
+
+        .sparkle:nth-child(1) { left: 5%; top: 15%; animation-delay: 0s; }
+        .sparkle:nth-child(2) { left: 15%; top: 45%; animation-delay: 0.5s; }
+        .sparkle:nth-child(3) { left: 25%; top: 75%; animation-delay: 1s; }
+        .sparkle:nth-child(4) { left: 35%; top: 25%; animation-delay: 1.5s; }
+        .sparkle:nth-child(5) { left: 45%; top: 55%; animation-delay: 2s; }
+        .sparkle:nth-child(6) { left: 55%; top: 85%; animation-delay: 0.3s; }
+        .sparkle:nth-child(7) { left: 65%; top: 35%; animation-delay: 0.8s; }
+        .sparkle:nth-child(8) { left: 75%; top: 65%; animation-delay: 1.3s; }
+        .sparkle:nth-child(9) { left: 85%; top: 20%; animation-delay: 1.8s; }
+        .sparkle:nth-child(10) { left: 95%; top: 50%; animation-delay: 2.3s; }
+        .sparkle:nth-child(11) { left: 8%; top: 90%; animation-delay: 0.2s; }
+        .sparkle:nth-child(12) { left: 92%; top: 80%; animation-delay: 0.7s; }
+
+        @keyframes sparkle {
+            0%, 100% { opacity: 0; transform: scale(0); }
+            50% { opacity: 1; transform: scale(1); }
+        }
+
+        /* Grid Pattern Overlay */
+        .hero-grid {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+            background-size: 60px 60px;
+            z-index: 1;
+            animation: gridMove 20s linear infinite;
+        }
+
+        @keyframes gridMove {
+            0% { transform: perspective(500px) rotateX(0deg); }
+            100% { transform: perspective(500px) rotateX(5deg); }
         }
 
         .hero-container {
@@ -234,6 +456,8 @@
         .hero-content {
             animation: slideUp 1s ease forwards;
             opacity: 0;
+            position: relative;
+            z-index: 10;
         }
 
         @keyframes slideUp {
@@ -252,21 +476,29 @@
             align-items: center;
             gap: 0.5rem;
             padding: 0.5rem 1rem;
-            background: rgba(0, 245, 212, 0.1);
-            border: 1px solid rgba(0, 245, 212, 0.3);
+            background: rgba(255, 255, 255, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.4);
             border-radius: 50px;
             font-size: 0.85rem;
-            color: var(--primary);
+            color: #ffffff;
             margin-bottom: 1.5rem;
+            backdrop-filter: blur(10px);
+            animation: badgePulse 2s ease-in-out infinite;
+        }
+
+        @keyframes badgePulse {
+            0%, 100% { box-shadow: 0 0 20px rgba(255,255,255,0.2); }
+            50% { box-shadow: 0 0 40px rgba(255,255,255,0.4); }
         }
 
         .hero-badge::before {
             content: '';
             width: 8px;
             height: 8px;
-            background: var(--primary);
+            background: #ffffff;
             border-radius: 50%;
             animation: pulse 2s infinite;
+            box-shadow: 0 0 10px #fff, 0 0 20px #fff;
         }
 
         @keyframes pulse {
@@ -281,20 +513,37 @@
             line-height: 1.1;
             margin-bottom: 1.5rem;
             letter-spacing: -1px;
+            color: #ffffff;
+            text-shadow: 0 0 40px rgba(255,255,255,0.3);
+            animation: titleGlow 3s ease-in-out infinite;
+        }
+
+        @keyframes titleGlow {
+            0%, 100% { text-shadow: 0 0 40px rgba(255,255,255,0.3), 0 0 80px rgba(255,255,255,0.1); }
+            50% { text-shadow: 0 0 60px rgba(255,255,255,0.5), 0 0 120px rgba(255,255,255,0.2); }
         }
 
         .hero h1 .highlight {
-            background: var(--gradient-primary);
+            background: linear-gradient(135deg, #ffffff 0%, #d1fae5 50%, #a7f3d0 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
+            animation: shimmer 3s ease-in-out infinite;
+            background-size: 200% auto;
+        }
+
+        @keyframes shimmer {
+            0% { background-position: 0% center; }
+            50% { background-position: 100% center; }
+            100% { background-position: 0% center; }
         }
 
         .hero p {
             font-size: 1.2rem;
-            color: var(--text-muted);
+            color: rgba(255, 255, 255, 0.9);
             margin-bottom: 2rem;
             max-width: 500px;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.2);
         }
 
         .hero-buttons {
@@ -308,7 +557,7 @@
             gap: 3rem;
             margin-top: 3rem;
             padding-top: 2rem;
-            border-top: 1px solid rgba(255,255,255,0.1);
+            border-top: 1px solid rgba(255,255,255,0.3);
         }
 
         .stat {
@@ -319,19 +568,21 @@
             font-family: var(--font-display);
             font-size: 2.5rem;
             font-weight: 700;
-            color: var(--primary);
+            color: #ffffff;
             display: block;
+            text-shadow: 0 0 30px rgba(255,255,255,0.5);
         }
 
         .stat-label {
             font-size: 0.9rem;
-            color: var(--text-muted);
+            color: rgba(255, 255, 255, 0.8);
         }
 
         .hero-visual {
             position: relative;
             animation: slideUp 1s ease 0.3s forwards;
             opacity: 0;
+            z-index: 10;
         }
 
         .browser-mockup {
@@ -339,15 +590,29 @@
             border-radius: 16px;
             overflow: hidden;
             box-shadow: 
-                0 0 0 1px rgba(255,255,255,0.1),
-                0 50px 100px -20px rgba(0,0,0,0.5),
-                0 0 100px rgba(255, 122, 0, 0.1);
+                0 0 0 1px rgba(255,255,255,0.2),
+                0 50px 100px -20px rgba(0,0,0,0.7),
+                0 0 80px rgba(255, 255, 255, 0.15),
+                0 0 150px rgba(16, 185, 129, 0.2);
             transform: perspective(1000px) rotateY(-5deg) rotateX(5deg);
-            transition: transform 0.5s ease;
+            transition: all 0.5s ease;
+            animation: mockupFloat 6s ease-in-out infinite;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        @keyframes mockupFloat {
+            0%, 100% { transform: perspective(1000px) rotateY(-5deg) rotateX(5deg) translateY(0); }
+            50% { transform: perspective(1000px) rotateY(-3deg) rotateX(3deg) translateY(-15px); }
         }
 
         .browser-mockup:hover {
-            transform: perspective(1000px) rotateY(0) rotateX(0);
+            transform: perspective(1000px) rotateY(0) rotateX(0) scale(1.02);
+            box-shadow: 
+                0 0 0 1px rgba(255,255,255,0.3),
+                0 60px 120px -20px rgba(0,0,0,0.8),
+                0 0 100px rgba(255, 255, 255, 0.25),
+                0 0 200px rgba(16, 185, 129, 0.3);
+            animation-play-state: paused;
         }
 
         .browser-header {
@@ -502,7 +767,7 @@
 
         .feature-card:hover {
             transform: translateY(-10px);
-            border-color: rgba(255, 122, 0, 0.2);
+            border-color: rgba(16, 185, 129, 0.2);
             box-shadow: 0 30px 60px -20px rgba(0,0,0,0.5);
         }
 
@@ -726,7 +991,7 @@
             left: -50%;
             width: 200%;
             height: 200%;
-            background: radial-gradient(circle, rgba(255, 122, 0, 0.1) 0%, transparent 50%);
+            background: radial-gradient(circle, rgba(16, 185, 129, 0.1) 0%, transparent 50%);
             animation: rotate 20s linear infinite;
         }
 
@@ -1002,12 +1267,12 @@
         }
 
         .faq-item:hover {
-            border-color: rgba(255, 122, 0, 0.2);
+            border-color: rgba(16, 185, 129, 0.2);
         }
 
         .faq-item.open {
             border-color: var(--primary);
-            box-shadow: 0 10px 40px -10px rgba(255, 122, 0, 0.2);
+            box-shadow: 0 10px 40px -10px rgba(16, 185, 129, 0.2);
         }
 
         .faq-question {
@@ -1083,6 +1348,52 @@
 
     <!-- Hero Section -->
     <section class="hero">
+        <!-- Hero Background Effects -->
+        <div class="hero-grid"></div>
+        <div class="hero-glow hero-glow-1"></div>
+        <div class="hero-glow hero-glow-2"></div>
+        <div class="hero-glow hero-glow-3"></div>
+        
+        <!-- Floating Particles -->
+        <div class="hero-particles">
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+        </div>
+        
+        <!-- Sparkle Stars -->
+        <div class="hero-sparkles">
+            <div class="sparkle"></div>
+            <div class="sparkle"></div>
+            <div class="sparkle"></div>
+            <div class="sparkle"></div>
+            <div class="sparkle"></div>
+            <div class="sparkle"></div>
+            <div class="sparkle"></div>
+            <div class="sparkle"></div>
+            <div class="sparkle"></div>
+            <div class="sparkle"></div>
+            <div class="sparkle"></div>
+            <div class="sparkle"></div>
+        </div>
+
+        <!-- Wave Animation -->
+        <div class="hero-wave">
+            <svg class="wave1" viewBox="0 0 1440 320" preserveAspectRatio="none">
+                <path fill="#0a0a0f" d="M0,96L48,112C96,128,192,160,288,186.7C384,213,480,235,576,213.3C672,192,768,128,864,128C960,128,1056,192,1152,208C1248,224,1344,192,1392,176L1440,160L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path>
+            </svg>
+            <svg class="wave2" viewBox="0 0 1440 320" preserveAspectRatio="none">
+                <path fill="#12121a" d="M0,64L48,80C96,96,192,128,288,128C384,128,480,96,576,90.7C672,85,768,107,864,133.3C960,160,1056,192,1152,186.7C1248,181,1344,139,1392,117.3L1440,96L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path>
+            </svg>
+        </div>
+
         <div class="hero-container">
             <div class="hero-content">
                 <div class="hero-badge">
